@@ -1,12 +1,24 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
+import QuickStats from "@/components/dashboard/QuickStats";
+import PatientSearch from "@/components/dashboard/PatientSearch";
+import DoctorCards from "@/components/dashboard/DoctorCards";
+import MedicalWallet from "@/components/dashboard/MedicalWallet";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-gradient-bg">
+      <DashboardHeader />
+      
+      <main className="container mx-auto px-6 py-8">
+        <QuickStats />
+        
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
+          <PatientSearch />
+          <MedicalWallet />
+        </div>
+        
+        <DoctorCards />
+      </main>
     </div>
   );
 };
