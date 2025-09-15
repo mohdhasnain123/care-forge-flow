@@ -1,34 +1,34 @@
-import { Users, Calendar, TrendingUp, Clock } from "lucide-react";
+import { Calendar, FileText, Users, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const QuickStats = () => {
   const stats = [
     {
-      title: "Active Patients",
-      value: "24",
-      change: "+3 today",
-      icon: Users,
+      title: "Upcoming Appointments",
+      value: "3",
+      change: "Next: Tomorrow 2PM",
+      icon: Calendar,
       color: "bg-gradient-primary",
     },
     {
-      title: "Pending Consultations",
-      value: "7",
-      change: "2 urgent",
-      icon: Calendar,
+      title: "Active Treatments",
+      value: "2",
+      change: "In progress",
+      icon: FileText,
       color: "bg-gradient-secondary",
     },
     {
-      title: "Treatment Success Rate",
-      value: "94.2%",
-      change: "+2.1% this month",
-      icon: TrendingUp,
+      title: "Shared Records",
+      value: "5",
+      change: "Currently active",
+      icon: Users,
       color: "bg-gradient-accent",
     },
     {
-      title: "Average Response Time",
-      value: "12min",
-      change: "Below target",
-      icon: Clock,
+      title: "Health Score",
+      value: "87%",
+      change: "+5% this month",
+      icon: TrendingUp,
       color: "bg-secondary",
     },
   ];

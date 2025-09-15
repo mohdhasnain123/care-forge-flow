@@ -1,4 +1,4 @@
-import { Bell, User, Search } from "lucide-react";
+import { Bell, Activity, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -9,11 +9,11 @@ const DashboardHeader = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <div className="bg-gradient-primary text-primary-foreground p-3 rounded-lg shadow-glow">
-            <User className="h-6 w-6" />
+            <Activity className="h-6 w-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-foreground">Welcome, Dr. Sarah Chen</h1>
-            <p className="text-muted-foreground">Cardiologist • Department of Internal Medicine</p>
+            <h1 className="text-2xl font-bold text-foreground">My Health Dashboard</h1>
+            <p className="text-muted-foreground">Find Specialists & Manage Your Care</p>
           </div>
         </div>
         
@@ -21,7 +21,7 @@ const DashboardHeader = () => {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input 
-              placeholder="Search patients, records..." 
+              placeholder="Search doctors, specialties..." 
               className="pl-10 w-64 bg-background border-border focus:border-primary focus:ring-1 focus:ring-primary"
             />
           </div>
@@ -34,8 +34,8 @@ const DashboardHeader = () => {
           </Button>
           
           <Avatar className="h-10 w-10 ring-2 ring-primary ring-offset-2">
-            <AvatarImage src="/placeholder.svg" alt="Dr. Sarah Chen" />
-            <AvatarFallback className="bg-gradient-primary text-primary-foreground">SC</AvatarFallback>
+            <AvatarImage src="/placeholder.svg" alt="John Doe" />
+            <AvatarFallback className="bg-gradient-primary text-primary-foreground">JD</AvatarFallback>
           </Avatar>
         </div>
       </div>

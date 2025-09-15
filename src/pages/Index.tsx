@@ -1,6 +1,6 @@
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import QuickStats from "@/components/dashboard/QuickStats";
-import PatientSearch from "@/components/dashboard/PatientSearch";
+import DoctorSearch from "@/components/dashboard/DoctorSearch";
 import DoctorCards from "@/components/dashboard/DoctorCards";
 import MedicalWallet from "@/components/dashboard/MedicalWallet";
 
@@ -13,7 +13,7 @@ const Index = () => {
         <QuickStats />
         
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
-          <PatientSearch />
+          <DoctorSearch />
           <MedicalWallet />
         </div>
         
