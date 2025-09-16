@@ -1,4 +1,4 @@
-import { Calendar, FileText, Users, TrendingUp } from "lucide-react";
+import { Calendar, FileText, Users, AlertTriangle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const QuickStats = () => {
@@ -25,20 +25,33 @@ const QuickStats = () => {
       color: "bg-gradient-accent",
     },
     {
-      title: "Health Score",
-      value: "87%",
-      change: "+5% this month",
-      icon: TrendingUp,
-      color: "bg-secondary",
+      title: "Critical Alerts",
+      value: "1",
+      change: "Requires immediate attention",
+      icon: AlertTriangle,
+      color: "bg-destructive",
+      isClickable: true
     },
   ];
+
+  const handleCardClick = (stat: any) => {
+    if (stat.isClickable) {
+      // This will trigger showing the patient alert
+      const event = new CustomEvent('showPatientAlert');
+      window.dispatchEvent(event);
+    }
+  };
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
       {stats.map((stat, index) => {
         const IconComponent = stat.icon;
         return (
-          <Card key={index} className="bg-gradient-card border-border shadow-md hover:shadow-lg transition-shadow">
+          <Card 
+            key={index} 
+            className={`bg-gradient-card border-border shadow-md hover:shadow-lg transition-shadow ${stat.isClickable ? 'cursor-pointer hover:scale-105 transition-transform' : ''}`}
+            onClick={() => handleCardClick(stat)}
+          >
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
