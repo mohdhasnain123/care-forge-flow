@@ -5,39 +5,39 @@ const QuickStats = () => {
   const stats = [
     {
       title: "Upcoming Appointments",
-      value: "3",
-      change: "Next: Tomorrow 2PM",
+      value: "24",
+      change: "Next: 9:00 AM",
       icon: Calendar,
       color: "bg-gradient-primary",
     },
     {
       title: "Active Treatments",
-      value: "2",
-      change: "In progress",
+      value: "18",
+      change: "3 critical, 15 stable",
       icon: FileText,
       color: "bg-gradient-secondary",
     },
     {
-      title: "Shared Records",
-      value: "5",
-      change: "Currently active",
-      icon: Users,
-      color: "bg-gradient-accent",
-    },
-    {
       title: "Critical Alerts",
-      value: "1",
+      value: "3",
       change: "Requires immediate attention",
       icon: AlertTriangle,
       color: "bg-destructive",
       isClickable: true
     },
+    {
+      title: "Bed Utilization",
+      value: "89%",
+      change: "234/263 beds occupied",
+      icon: Users,
+      color: "bg-gradient-accent",
+    },
   ];
 
   const handleCardClick = (stat: any) => {
     if (stat.isClickable) {
-      // This will trigger showing the patient alert
-      const event = new CustomEvent('showPatientAlert');
+      // This will trigger showing the critical patients list
+      const event = new CustomEvent('showCriticalPatients');
       window.dispatchEvent(event);
     }
   };

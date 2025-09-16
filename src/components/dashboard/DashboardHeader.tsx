@@ -12,8 +12,8 @@ const DashboardHeader = () => {
             <Activity className="h-6 w-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-foreground">My Health Dashboard</h1>
-            <p className="text-muted-foreground">Find Specialists & Manage Your Care</p>
+            <h1 className="text-2xl font-bold text-foreground">Health Provider Dashboard</h1>
+            <p className="text-muted-foreground">Patient Care & Resource Management</p>
           </div>
         </div>
         
@@ -21,7 +21,7 @@ const DashboardHeader = () => {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input 
-              placeholder="Search doctors, specialties..." 
+              placeholder="Search patients, records..." 
               className="pl-10 w-64 bg-background border-border focus:border-primary focus:ring-1 focus:ring-primary"
             />
           </div>
@@ -34,8 +34,8 @@ const DashboardHeader = () => {
           </Button>
           
           <Avatar className="h-10 w-10 ring-2 ring-primary ring-offset-2">
-            <AvatarImage src="/placeholder.svg" alt="John Doe" />
-            <AvatarFallback className="bg-gradient-primary text-primary-foreground">JD</AvatarFallback>
+            <AvatarImage src="/placeholder.svg" alt="Dr. Mira" />
+            <AvatarFallback className="bg-gradient-primary text-primary-foreground">DM</AvatarFallback>
           </Avatar>
         </div>
       </div>

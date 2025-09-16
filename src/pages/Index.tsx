@@ -6,23 +6,36 @@ import DoctorCards from "@/components/dashboard/DoctorCards";
 import MedicalWallet from "@/components/dashboard/MedicalWallet";
 import PatientAlert from "@/components/dashboard/PatientAlert";
 import CardiacSpecialists from "@/components/dashboard/CardiacSpecialists";
+import CriticalPatientsList from "@/components/dashboard/CriticalPatientsList";
+import PatientOverview from "@/components/dashboard/PatientOverview";
 
 const Index = () => {
-  const [currentView, setCurrentView] = useState<'dashboard' | 'patientAlert' | 'specialists'>('dashboard');
+  const [currentView, setCurrentView] = useState<'dashboard' | 'criticalPatients' | 'patientAlert' | 'specialists'>('dashboard');
+  const [selectedPatientId, setSelectedPatientId] = useState<string>('');
 
-  // Listen for the custom event from QuickStats
+  // Listen for the custom events from QuickStats
   useEffect(() => {
-    const handleShowPatientAlert = () => setCurrentView('patientAlert');
-    window.addEventListener('showPatientAlert', handleShowPatientAlert);
-    return () => window.removeEventListener('showPatientAlert', handleShowPatientAlert);
+    const handleShowCriticalPatients = () => setCurrentView('criticalPatients');
+    window.addEventListener('showCriticalPatients', handleShowCriticalPatients);
+    return () => window.removeEventListener('showCriticalPatients', handleShowCriticalPatients);
   }, []);
 
   const renderContent = () => {
     switch (currentView) {
+      case 'criticalPatients':
+        return (
+          <CriticalPatientsList 
+            onBack={() => setCurrentView('dashboard')}
+            onSelectPatient={(patientId) => {
+              setSelectedPatientId(patientId);
+              setCurrentView('patientAlert');
+            }}
+          />
+        );
       case 'patientAlert':
         return (
           <PatientAlert 
-            onBack={() => setCurrentView('dashboard')}
+            onBack={() => setCurrentView('criticalPatients')}
             onViewSpecialists={() => setCurrentView('specialists')}
           />
         );
@@ -36,13 +49,7 @@ const Index = () => {
         return (
           <>
             <QuickStats />
-            
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
-              <DoctorSearch />
-              <MedicalWallet />
-            </div>
-            
-            <DoctorCards />
+            <PatientOverview />
           </>
         );
     }
