@@ -1,49 +1,97 @@
-import { Calendar, FileText, Users, AlertTriangle } from "lucide-react";
+import { Calendar, FileText, AlertTriangle, Bed, Users, Activity, Brain, Stethoscope, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const QuickStats = () => {
   const stats = [
     {
       title: "Upcoming Appointments",
-      value: "24",
-      change: "Next: 9:00 AM",
+      value: "47",
+      change: "Next: Dr. Smith 9:00 AM",
       icon: Calendar,
       color: "bg-gradient-primary",
+      isClickable: true,
+      action: "appointments"
     },
     {
       title: "Active Treatments",
-      value: "18",
-      change: "3 critical, 15 stable",
+      value: "156",
+      change: "12 critical, 89 stable, 55 recovering",
       icon: FileText,
       color: "bg-gradient-secondary",
+      isClickable: true,
+      action: "treatments"
     },
     {
       title: "Critical Alerts",
-      value: "3",
-      change: "Requires immediate attention",
+      value: "8",
+      change: "AI-detected emergencies",
       icon: AlertTriangle,
       color: "bg-destructive",
-      isClickable: true
+      isClickable: true,
+      action: "critical"
     },
     {
       title: "Bed Utilization",
-      value: "89%",
-      change: "234/263 beds occupied",
-      icon: Users,
+      value: "87%",
+      change: "234/268 beds • 12 ICU available",
+      icon: Bed,
       color: "bg-gradient-accent",
+      isClickable: true,
+      action: "beds"
+    },
+    {
+      title: "Staff Optimization",
+      value: "94%",
+      change: "87 active, 12 on-call",
+      icon: Users,
+      color: "bg-success",
+      isClickable: true,
+      action: "staff"
+    },
+    {
+      title: "AI Agent Status",
+      value: "Online",
+      change: "Ready to assist",
+      icon: Brain,
+      color: "bg-gradient-primary",
+      isClickable: true,
+      action: "aiAgent"
     },
   ];
 
   const handleCardClick = (stat: any) => {
     if (stat.isClickable) {
-      // This will trigger showing the critical patients list
-      const event = new CustomEvent('showCriticalPatients');
-      window.dispatchEvent(event);
+      switch (stat.action) {
+        case 'critical':
+          const event = new CustomEvent('showCriticalPatients');
+          window.dispatchEvent(event);
+          break;
+        case 'appointments':
+          const appointmentsEvent = new CustomEvent('showAppointments');
+          window.dispatchEvent(appointmentsEvent);
+          break;
+        case 'treatments':
+          const treatmentsEvent = new CustomEvent('showTreatments');
+          window.dispatchEvent(treatmentsEvent);
+          break;
+        case 'beds':
+          const bedsEvent = new CustomEvent('showBedUtilization');
+          window.dispatchEvent(bedsEvent);
+          break;
+        case 'staff':
+          const staffEvent = new CustomEvent('showStaffOptimization');
+          window.dispatchEvent(staffEvent);
+          break;
+        case 'aiAgent':
+          const aiEvent = new CustomEvent('showAIAgent');
+          window.dispatchEvent(aiEvent);
+          break;
+      }
     }
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
       {stats.map((stat, index) => {
         const IconComponent = stat.icon;
         return (

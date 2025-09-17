@@ -1,23 +1,42 @@
 import { useState, useEffect } from "react";
 import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import QuickStats from "@/components/dashboard/QuickStats";
-import DoctorSearch from "@/components/dashboard/DoctorSearch";
-import DoctorCards from "@/components/dashboard/DoctorCards";
-import MedicalWallet from "@/components/dashboard/MedicalWallet";
 import PatientAlert from "@/components/dashboard/PatientAlert";
 import CardiacSpecialists from "@/components/dashboard/CardiacSpecialists";
 import CriticalPatientsList from "@/components/dashboard/CriticalPatientsList";
 import PatientOverview from "@/components/dashboard/PatientOverview";
+import AIProviderAssistant from "@/components/dashboard/AIProviderAssistant";
+import DoctorStatusMatrix from "@/components/dashboard/DoctorStatusMatrix";
 
 const Index = () => {
-  const [currentView, setCurrentView] = useState<'dashboard' | 'criticalPatients' | 'patientAlert' | 'specialists'>('dashboard');
+  const [currentView, setCurrentView] = useState<'dashboard' | 'criticalPatients' | 'patientAlert' | 'specialists' | 'aiAgent' | 'doctorStatus' | 'appointments' | 'treatments' | 'beds' | 'staff'>('dashboard');
   const [selectedPatientId, setSelectedPatientId] = useState<string>('');
 
   // Listen for the custom events from QuickStats
   useEffect(() => {
     const handleShowCriticalPatients = () => setCurrentView('criticalPatients');
+    const handleShowAIAgent = () => setCurrentView('aiAgent');
+    const handleShowDoctorStatus = () => setCurrentView('doctorStatus');
+    const handleShowAppointments = () => setCurrentView('appointments');
+    const handleShowTreatments = () => setCurrentView('treatments');
+    const handleShowBedUtilization = () => setCurrentView('beds');
+    const handleShowStaffOptimization = () => setCurrentView('staff');
+
     window.addEventListener('showCriticalPatients', handleShowCriticalPatients);
-    return () => window.removeEventListener('showCriticalPatients', handleShowCriticalPatients);
+    window.addEventListener('showAIAgent', handleShowAIAgent);
+    window.addEventListener('showAppointments', handleShowAppointments);
+    window.addEventListener('showTreatments', handleShowTreatments);
+    window.addEventListener('showBedUtilization', handleShowBedUtilization);
+    window.addEventListener('showStaffOptimization', handleShowStaffOptimization);
+
+    return () => {
+      window.removeEventListener('showCriticalPatients', handleShowCriticalPatients);
+      window.removeEventListener('showAIAgent', handleShowAIAgent);
+      window.removeEventListener('showAppointments', handleShowAppointments);
+      window.removeEventListener('showTreatments', handleShowTreatments);
+      window.removeEventListener('showBedUtilization', handleShowBedUtilization);
+      window.removeEventListener('showStaffOptimization', handleShowStaffOptimization);
+    };
   }, []);
 
   const renderContent = () => {
@@ -44,6 +63,36 @@ const Index = () => {
           <CardiacSpecialists 
             onBack={() => setCurrentView('patientAlert')}
           />
+        );
+      case 'aiAgent':
+        return (
+          <AIProviderAssistant 
+            onBack={() => setCurrentView('dashboard')}
+          />
+        );
+      case 'doctorStatus':
+        return (
+          <DoctorStatusMatrix 
+            onBack={() => setCurrentView('dashboard')}
+          />
+        );
+      case 'appointments':
+      case 'treatments':
+      case 'beds':
+      case 'staff':
+        return (
+          <div className="text-center py-12">
+            <h2 className="text-2xl font-bold text-foreground mb-4">
+              {currentView.charAt(0).toUpperCase() + currentView.slice(1)} Management
+            </h2>
+            <p className="text-muted-foreground mb-6">This section is under development</p>
+            <button 
+              onClick={() => setCurrentView('dashboard')}
+              className="bg-primary text-primary-foreground px-4 py-2 rounded hover:bg-primary/90"
+            >
+              Back to Dashboard
+            </button>
+          </div>
         );
       default:
         return (
