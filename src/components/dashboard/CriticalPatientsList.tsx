@@ -24,34 +24,34 @@ const CriticalPatientsList = ({ onBack, onSelectPatient }: CriticalPatientsListP
       },
       riskScore: 95
     },
-    {
-      id: "PA-2024-002", 
-      name: "Sarah Williams",
-      age: 45,
-      condition: "Severe Respiratory Distress",
-      severity: "CRITICAL",
-      timeDetected: "5 minutes ago",
-      vitals: {
-        heartRate: "134 BPM",
-        bloodPressure: "95/60", 
-        oxygen: "78%"
-      },
-      riskScore: 92
-    },
-    {
-      id: "PA-2024-003",
-      name: "Michael Chen",
-      age: 67,
-      condition: "Stroke Alert",
-      severity: "CRITICAL", 
-      timeDetected: "8 minutes ago",
-      vitals: {
-        heartRate: "98 BPM",
-        bloodPressure: "220/110",
-        oxygen: "94%"
-      },
-      riskScore: 88
-    }
+    // {
+    //   id: "PA-2024-002", 
+    //   name: "Sarah Williams",
+    //   age: 45,
+    //   condition: "Severe Respiratory Distress",
+    //   severity: "CRITICAL",
+    //   timeDetected: "5 minutes ago",
+    //   vitals: {
+    //     heartRate: "134 BPM",
+    //     bloodPressure: "95/60", 
+    //     oxygen: "78%"
+    //   },
+    //   riskScore: 92
+    // },
+    // {
+    //   id: "PA-2024-003",
+    //   name: "Michael Chen",
+    //   age: 67,
+    //   condition: "Stroke Alert",
+    //   severity: "CRITICAL", 
+    //   timeDetected: "8 minutes ago",
+    //   vitals: {
+    //     heartRate: "98 BPM",
+    //     bloodPressure: "220/110",
+    //     oxygen: "94%"
+    //   },
+    //   riskScore: 88
+    // }
   ];
 
   const getSeverityColor = (severity: string) => {

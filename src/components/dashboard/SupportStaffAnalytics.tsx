@@ -42,7 +42,7 @@ const SupportStaffAnalytics = () => {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
       <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-glow">
         <CardHeader>
-          <CardTitle className="text-lg font-semibold text-foreground neon-glow">
+          <CardTitle className="text-lg font-semibold text-foreground">
             Support Staff by Category
           </CardTitle>
         </CardHeader>
@@ -107,7 +107,7 @@ const SupportStaffAnalytics = () => {
 
       <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-glow">
         <CardHeader>
-          <CardTitle className="text-lg font-semibold text-foreground neon-glow">
+          <CardTitle className="text-lg font-semibold text-foreground">
             Staff Availability Overview
           </CardTitle>
         </CardHeader>

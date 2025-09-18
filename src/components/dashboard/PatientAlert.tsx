@@ -200,11 +200,11 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
               
               <Button variant="outline" className="w-full" onClick={onViewSpecialists}>
                 <Heart className="h-4 w-4 mr-2" />
-                View Cardiac Specialists
+                View Othropedic Specialists
               </Button>
               <Button variant="outline" className="w-full">
                 <Video className="h-4 w-4 mr-2" />
-                Video Consultation
+                Video Consultation with Orthopedic
               </Button>
             </div>
           </CardContent>
