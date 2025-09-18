@@ -150,10 +150,10 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
           <Badge className="bg-destructive text-destructive-foreground animate-pulse">
             CRITICAL
           </Badge>
-          <Badge className="bg-warning text-warning-foreground">
+          <Badge className="bg-warning text-warning-foreground text-black">
             Risk: {patientData.riskScore}%
           </Badge>
-          <Badge className="bg-success text-white">
+          <Badge className="bg-success text-black">
             Payer: Pre-Approved
           </Badge>
         </div>
@@ -203,10 +203,10 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
                   <Phone className="h-4 w-4 mr-2" />
                   Emergency Call
                 </Button>
-                <Button variant="outline" className="w-full border-warning text-warning hover:bg-warning hover:text-white">
+                {/* <Button variant="outline" className="w-full border-warning text-warning hover:bg-warning hover:text-black">
                   <Users className="h-4 w-4 mr-2" />
                   Alert Medical Team
-                </Button>
+                </Button> */}
               </div>
             </div>
           </CardContent>
@@ -218,7 +218,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
             <CardTitle className="flex items-center space-x-2">
               <Activity className="h-5 w-5 text-success animate-pulse" />
               <span>Live Wearable Data</span>
-              <Badge className="bg-success text-white text-xs">LIVE</Badge>
+              <Badge className="bg-success text-black text-xs">LIVE</Badge>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -231,7 +231,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
                   </div>
                   <div className="text-right">
                     <p className="font-bold text-lg text-foreground">{vital.value}</p>
-                    <Badge className={`${getStatusColor(vital.status)} text-xs`}>
+                    <Badge className={`${getStatusColor(vital.status)} text-xs text-black`}>
                       {vital.trend}
                     </Badge>
                   </div>
@@ -247,7 +247,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
             <CardTitle className="flex items-center space-x-2">
               <Shield className="h-5 w-5 text-primary" />
               <span>Medical Records</span>
-              <Badge className="bg-primary text-white text-xs">BLOCKCHAIN SECURED</Badge>
+              <Badge className="bg-primary text-black text-xs">BLOCKCHAIN SECURED</Badge>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -264,13 +264,17 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
                 </div>
               </div>
               
-              <Button variant="outline" className="w-full" onClick={onViewSpecialists}>
+              {/* <Button variant="outline" className="w-full" onClick={onViewSpecialists}>
                 <Heart className="h-4 w-4 mr-2" />
                 View Orthopedic Specialists
-              </Button>
+              </Button> */}
+              <Button variant="outline" className="w-full border-warning text-warning hover:bg-warning hover:text-black">
+                  <Users className="h-4 w-4 mr-2" />
+                  Alert Medical Team
+                </Button>
               <Button variant="outline" className="w-full" onClick={() => setShowVideoCall(true)}>
                 <Video className="h-4 w-4 mr-2" />
-                Video Consultation with Orthopedic
+                Video Consultation with Orthopedic and Neurologist
               </Button>
             </div>
           </CardContent>
@@ -283,8 +287,8 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
           <CardTitle className="flex items-center space-x-2">
             <Truck className="h-5 w-5 text-warning" />
             <span>Ambulance Treatment Plan</span>
-            <Badge className="bg-warning text-white">{ambulanceData.status}</Badge>
-            <Badge className="bg-success text-white">ETA: {ambulanceData.eta}</Badge>
+            <Badge className="bg-warning text-black">{ambulanceData.status}</Badge>
+            <Badge className="bg-success text-black">ETA: {ambulanceData.eta}</Badge>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -333,7 +337,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
       </Card>
 
       {/* Diagnostic & Treatment Protocols */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Card className="bg-gradient-card border-border shadow-lg">
           <CardHeader>
             <CardTitle className="text-sm font-semibold text-warning">Immediate Actions</CardTitle>
@@ -397,7 +401,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
             </ul>
           </CardContent>
         </Card>
-      </div>
+      </div> */}
 
       {/* Video Call Modal */}
       {showVideoCall && (
@@ -407,7 +411,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
               <CardTitle className="flex items-center space-x-2">
                 <Video className="h-5 w-5 text-success" />
                 <span>Dr. Sarah Chen - Orthopedic Surgeon</span>
-                <Badge className="bg-success text-white text-xs">LIVE</Badge>
+                <Badge className="bg-success text-black text-xs">LIVE</Badge>
               </CardTitle>
               <Button variant="ghost" onClick={() => setShowVideoCall(false)} className="p-2">
                 <X className="h-5 w-5" />
@@ -431,7 +435,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
                       <Video className="h-4 w-4" />
                     </Button>
                   </div>
-                  <div className="text-white text-sm bg-black/50 px-3 py-1 rounded">
+                  <div className="text-black text-sm bg-black/50 px-3 py-1 rounded">
                     Discussing treatment options for knee injury...
                   </div>
                 </div>

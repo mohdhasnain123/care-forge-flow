@@ -7,7 +7,7 @@ const QuickStats = () => {
     {
       title: "Upcoming Appointments",
       value: "47",
-      change: "Next: Dr. Smith 9:00 AM",
+      change: "",
       icon: Calendar,
       color: "bg-gradient-primary",
       isClickable: true,
@@ -49,15 +49,15 @@ const QuickStats = () => {
       isClickable: true,
       action: "staff"
     },
-    {
-      title: "AI Agent Status",
-      value: "Online",
-      change: "Ready to assist",
-      icon: Brain,
-      color: "bg-gradient-primary",
-      isClickable: true,
-      action: "aiAgent"
-    },
+    // {
+    //   title: "AI Agent Status",
+    //   value: "Online",
+    //   change: "Ready to assist",
+    //   icon: Brain,
+    //   color: "bg-gradient-primary",
+    //   isClickable: true,
+    //   action: "aiAgent"
+    // },
   ]);
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const QuickStats = () => {
         const baseValues = {
           "Upcoming Appointments": { base: 47, range: 10 },
           "Active Treatments": { base: 156, range: 15 },
-          "Critical Alerts": { base: 1, range: 3 },
+          "Critical Alerts": { base: 1, range: 1 },
           "Bed Utilization": { base: 87, range: 8 },
           "Staff Optimization": { base: 94, range: 6 }
         };
