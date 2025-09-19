@@ -1,10 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Network, Wifi, Battery, Activity, Shield, Zap, Smartphone, Watch } from "lucide-react";
+import { Network, Wifi, Battery, Activity, Shield, Zap, Smartphone, Watch, ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const IoMTDeviceNetwork = () => {
+  const navigate = useNavigate();
   const [networkData, setNetworkData] = useState({
     totalDevices: 2847,
     activeDevices: 2689,
@@ -21,8 +23,15 @@ const IoMTDeviceNetwork = () => {
         activeDevices: prev.activeDevices + Math.floor(Math.random() * 5) - 2,
         offlineDevices: prev.offlineDevices + Math.floor(Math.random() * 3) - 1,
         batteryAlerts: prev.batteryAlerts + Math.floor(Math.random() * 2) - 1,
-        networkHealth: Math.max(94, Math.min(98, prev.networkHealth + (Math.random() - 0.5) * 0.5))
+        networkHealth: parseFloat((Math.max(94, Math.min(98, prev.networkHealth + (Math.random() - 0.5) * 0.5))).toFixed(2))
       }));
+      
+      // Update device categories
+      setDeviceCategories(prev => prev.map(category => ({
+        ...category,
+        count: Math.max(400, category.count + Math.floor(Math.random() * 10) - 5),
+        status: parseFloat((Math.max(90, Math.min(100, category.status + (Math.random() - 0.5) * 0.5))).toFixed(2))
+      })));
     }, 3000);
 
     return () => clearInterval(interval);
@@ -30,12 +39,12 @@ const IoMTDeviceNetwork = () => {
 
   const Heart = Activity; // Using Activity as Heart icon placeholder
 
-  const deviceCategories = [
+  const [deviceCategories, setDeviceCategories] = useState([
     { name: "Cardiac Monitors", count: 892, status: 98.2, icon: Heart, color: "text-red-500" },
     { name: "Blood Pressure Monitors", count: 743, status: 97.1, icon: Activity, color: "text-blue-500" },
     { name: "Pulse Oximeters", count: 654, status: 99.1, icon: Zap, color: "text-green-500" },
     { name: "Smart Wearables", count: 558, status: 94.8, icon: Watch, color: "text-purple-500" }
-  ];
+  ]);
 
   const networkMetrics = [
     { metric: "Data Throughput", value: "847 MB/s", status: "Optimal", color: "bg-success" },
@@ -53,6 +62,15 @@ const IoMTDeviceNetwork = () => {
 
   return (
     <div className="space-y-6 p-6">
+      <div className="flex items-center justify-between">
+        <button 
+          onClick={() => navigate('/')}
+          className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors mb-4"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          <span>Back to Dashboard</span>
+        </button>
+      </div>
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-foreground">IoMT Device Network</h1>
@@ -150,7 +168,7 @@ const IoMTDeviceNetwork = () => {
                     <category.icon className={`h-5 w-5 ${category.color}`} />
                     <h4 className="font-semibold text-foreground">{category.name}</h4>
                   </div>
-                  <Badge className="bg-success text-white">{category.status}%</Badge>
+                  <Badge className="bg-success text-white">{category.status.toFixed(2)}%</Badge>
                 </div>
                 <div className="text-lg font-bold text-foreground mb-2">{category.count} devices</div>
                 <Progress value={category.status} className="h-2" />

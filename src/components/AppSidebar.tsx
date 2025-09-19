@@ -28,21 +28,26 @@ export function AppSidebar() {
   const isExpanded = items.some((i) => isActive(i.url));
 
   return (
-    <Sidebar className={state === "collapsed" ? "w-14" : "w-60"} collapsible="offcanvas">
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Analytics</SidebarGroupLabel>
+    <Sidebar className={`border-r border-gray-800 bg-black ${state === "collapsed" ? "w-14" : "w-60"}`} collapsible="offcanvas">
+      <SidebarContent className="bg-black">
+        <div className="flex h-16 items-center px-4 border-b border-gray-800">
+          <h2 className="text-xl font-bold text-white">Analytics</h2>
+        </div>
+        <SidebarGroup className="px-4 py-4">
+          {/* <SidebarGroupLabel className="text-gray-400 mb-2">Analytics</SidebarGroupLabel> */}
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <NavLink 
+                     <NavLink 
                       to={item.url} 
                       className={({ isActive }) => 
-                        isActive 
-                          ? "bg-primary/10 text-primary font-medium border-r-2 border-primary" 
-                          : "hover:bg-muted/50 text-muted-foreground hover:text-foreground"
+                        `flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors ${
+                          isActive 
+                            ? 'bg-white text-black' 
+                            : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                        }`
                       }
                     >
                       <item.icon className="h-4 w-4" />
