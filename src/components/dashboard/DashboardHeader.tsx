@@ -29,14 +29,14 @@ const DashboardHeader = () => {
           <Button 
             variant="outline" 
             size="icon" 
-            className="relative border-border hover:bg-muted"
+            className="relative border-border hover:bg-muted animate-pulse"
             onClick={() => {
               const notificationEvent = new CustomEvent('showNotifications');
               window.dispatchEvent(notificationEvent);
             }}
           >
-            <Bell className="h-4 w-4" />
-            <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground rounded-full text-xs w-5 h-5 flex items-center justify-center">
+            <Bell className="h-4 w-4 animate-bounce" />
+            <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground rounded-full text-xs w-5 h-5 flex items-center justify-center animate-pulse">
               1
             </span>
           </Button>

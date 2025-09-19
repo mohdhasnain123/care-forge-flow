@@ -125,28 +125,17 @@ const Index = () => {
       default:
         return (
           <>
-            
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-2xl font-bold text-foreground mb-6">Doctor Availability Analytics</h2>
-                <p className="text-muted-foreground mb-6">Real-time insights into medical staff distribution across specialties</p>
+            <QuickStats />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+              <PatientOverview />
+              <div className="space-y-6">
                 <DoctorAvailabilityAnalytics />
-              </div>
-              
-              <div>
-                <h2 className="text-2xl font-bold text-foreground mb-6">Support Staff Analytics</h2>
-                <p className="text-muted-foreground mb-6">Current status and distribution of nursing and support staff</p>
                 <SupportStaffAnalytics />
               </div>
-              
-              <div>
-                <h2 className="text-2xl font-bold text-foreground mb-6">Active Patient Analytics</h2>
-                <p className="text-muted-foreground mb-6">In-house and outpatient distribution across departments</p>
-                <PatientAnalytics />
-              </div>
             </div>
-            <QuickStats />
-            <PatientOverview />
+            <div className="mt-8">
+              <PatientAnalytics />
+            </div>
           </>
         );
     }
