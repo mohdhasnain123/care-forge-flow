@@ -11,6 +11,7 @@ const DoctorAvailabilityAnalytics = () => {
     { specialty: "Orthopedics", available: 2, busy: 1, offline: 0 },
     { specialty: "Dermatology", available: 2, busy: 0, offline: 1 },
     { specialty: "Psychiatry", available: 1, busy: 1, offline: 1 },
+    { specialty: "Emergency", available: 5, busy: 1, offline: 1 },
   ]);
 
   const [overallStatusData, setOverallStatusData] = useState([

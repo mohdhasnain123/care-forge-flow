@@ -244,9 +244,9 @@ const PatientOverview = () => {
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="font-semibold text-foreground">{agent.count}</div>
+                  {/* <div className="font-semibold text-foreground">{agent.count}</div> */}
                   <Badge className={`${agent.status === 'active' ? 'bg-success' : 'bg-warning'} text-black text-xs`}>
-                    {agent.status}
+                    {agent.count}
                   </Badge>
                 </div>
               </div>

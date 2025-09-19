@@ -22,15 +22,15 @@ const QuickStats = () => {
       isClickable: true,
       action: "treatments"
     },
-    {
-      title: "Emergency Doctors",
-      value: "8",
-      change: "Available for emergency cases",
-      icon: Users,
-      color: "bg-destructive",
-      isClickable: true,
-      action: "emergencyDoctors"
-    },
+    // {
+    //   title: "Emergency Doctors",
+    //   value: "8",
+    //   change: "Available for emergency cases",
+    //   icon: Users,
+    //   color: "bg-destructive",
+    //   isClickable: true,
+    //   action: "emergencyDoctors"
+    // },
     {
       title: "Bed Utilization",
       value: "87%",

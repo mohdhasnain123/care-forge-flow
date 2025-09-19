@@ -288,75 +288,38 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
                   <Users className="h-4 w-4 mr-2" />
                   Alert Medical Team
                 </Button>
+                <div>
+              <h4 className="font-semibold text-foreground mb-2">Live Video Consultation</h4>
+              <div className="relative bg-black rounded-lg overflow-hidden border-2 border-primary mb-3">
+                <div className="w-full h-20 bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <Video className="h-6 w-6 mx-auto mb-1 animate-pulse" />
+                    <p className="text-xs">Video Feed Active</p>
+                  </div>
+                </div>
+                <div className="absolute top-2 left-2 bg-green-600 text-white px-2 py-1 rounded text-xs font-bold animate-pulse">
+                  ● LIVE
+                </div>
+              </div>
+              
+              <div className="space-y-1">
+                <p 
+                  className="text-primary hover:text-primary/80 cursor-pointer font-medium flex items-center gap-2 text-sm"
+                  // onClick={() => setShowVideoCall(true)}
+                >
+                  <Video className="h-4 w-4" />
+                  Video Consultation with Orthopedic Specialist
+                </p>
+                <p className="text-muted-foreground hover:text-foreground cursor-pointer font-medium flex items-center gap-2 text-sm">
+                  <Video className="h-4 w-4" />
+                  Video Consultation with Neurologist
+                </p>
+              </div>
+            </div>
             </div>
           </CardContent>
         </Card>
       </div>
-
-      {/* Selected Orthopedic Doctor */}
-      <Card className="bg-gradient-card border-border shadow-lg">
-        <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <Users className="h-5 w-5 text-primary" />
-            <span>Selected Orthopedic Specialist</span>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex items-start justify-between">
-            <div className="space-y-2">
-              <h3 className="text-lg font-semibold text-foreground">Dr. Sarah Chen</h3>
-              <p className="text-muted-foreground">Orthopedic Surgery - Trauma Specialist</p>
-              <p className="text-sm text-muted-foreground">15+ years experience • Available in OR 3</p>
-            </div>
-            <Badge className="bg-success text-success-foreground">Available</Badge>
-          </div>
-          
-          <div className="space-y-3">
-            <h4 className="font-semibold text-foreground">Detailed Treatment Plan:</h4>
-            <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-              <li>• Immediate X-ray and MRI of right knee</li>
-              <li>• Pain management protocol initiation</li>
-              <li>• Surgical consultation for potential ORIF procedure</li>
-              <li>• Post-operative rehabilitation planning</li>
-              <li>• 24-hour monitoring in orthopedic unit</li>
-            </ul>
-          </div>
-          
-          <div className="bg-background p-4 rounded-lg border border-border">
-            <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
-              <Zap className="h-4 w-4" />
-              Cost Estimation:
-            </h4>
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <p className="text-muted-foreground">Emergency Consultation:</p>
-                <p className="font-semibold text-foreground">$850</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Imaging (X-ray + MRI):</p>
-                <p className="font-semibold text-foreground">$2,400</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Surgery (if required):</p>
-                <p className="font-semibold text-foreground">$15,000 - $25,000</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Hospital Stay (2-3 days):</p>
-                <p className="font-semibold text-foreground">$4,500 - $6,750</p>
-              </div>
-            </div>
-            <div className="mt-2 pt-2 border-t border-border flex justify-between items-center">
-              <p className="font-bold text-foreground">Total Estimated Cost:</p>
-              <p className="font-bold text-primary text-lg">$22,750 - $35,000</p>
-            </div>
-          </div>
-          
-          <Button className="w-full bg-gradient-primary text-primary-foreground hover:opacity-90">
-            <Zap className="h-4 w-4 mr-2" />
-            Alert Payers & Personal AI Agent
-          </Button>
-        </CardContent>
-      </Card>
 
       {/* Ambulance Treatment Plan */}
       <Card className="bg-gradient-card border-border shadow-lg">
@@ -374,7 +337,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h4 className="font-semibold text-foreground mb-2">Live Ambulance Feed</h4>
               <div className="p-2 bg-success/10 rounded border border-success/20">
@@ -426,36 +389,73 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
                 </li>
               </ul>
             </div>
-            
-            <div>
-              <h4 className="font-semibold text-foreground mb-2">Live Video Consultation</h4>
-              <div className="relative bg-black rounded-lg overflow-hidden border-2 border-primary mb-3">
-                <div className="w-full h-20 bg-gradient-to-r from-primary/20 to-accent/20 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <Video className="h-6 w-6 mx-auto mb-1 animate-pulse" />
-                    <p className="text-xs">Video Feed Active</p>
-                  </div>
-                </div>
-                <div className="absolute top-2 left-2 bg-green-600 text-white px-2 py-1 rounded text-xs font-bold animate-pulse">
-                  ● LIVE
-                </div>
+          
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Selected Orthopedic Doctor */}
+      <Card className="bg-gradient-card border-border shadow-lg">
+        <CardHeader>
+          <CardTitle className="flex items-center space-x-2">
+            <Users className="h-5 w-5 text-primary" />
+            <span>Selected Orthopedic Specialist</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-start justify-between">
+            <div className="space-y-2">
+              <h3 className="text-lg font-semibold text-foreground">Dr. Sarah Chen</h3>
+              <p className="text-muted-foreground">Orthopedic Surgery - Trauma Specialist</p>
+              <p className="text-sm text-muted-foreground">15+ years experience • Available in OR 3</p>
+            </div>
+            <Badge className="bg-success text-success-foreground text-black">Available</Badge>
+          </div>
+          
+          <div className="space-y-3">
+            <h4 className="font-semibold text-foreground">Detailed Treatment Plan:</h4>
+            <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+              <li>• Immediate X-ray and MRI of right knee</li>
+              <li>• Pain management protocol initiation</li>
+              <li>• Surgical consultation for potential ORIF procedure</li>
+              <li>• Post-operative rehabilitation planning</li>
+              <li>• 24-hour monitoring in orthopedic unit</li>
+            </ul>
+          </div>
+          
+          <div className="bg-background p-4 rounded-lg border border-border">
+            <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+              <Zap className="h-4 w-4" />
+              Cost Estimation:
+            </h4>
+            <div className="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <p className="text-muted-foreground">Emergency Consultation:</p>
+                <p className="font-semibold text-foreground">$850</p>
               </div>
-              
-              <div className="space-y-1">
-                <p 
-                  className="text-primary hover:text-primary/80 cursor-pointer font-medium flex items-center gap-2 text-sm"
-                  onClick={() => setShowVideoCall(true)}
-                >
-                  <Video className="h-4 w-4" />
-                  Video Consultation with Orthopedic Specialist
-                </p>
-                <p className="text-muted-foreground hover:text-foreground cursor-pointer font-medium flex items-center gap-2 text-sm">
-                  <Video className="h-4 w-4" />
-                  Video Consultation with Neurologist
-                </p>
+              <div>
+                <p className="text-muted-foreground">Imaging (X-ray + MRI):</p>
+                <p className="font-semibold text-foreground">$2,400</p>
+              </div>
+              <div>
+                <p className="text-muted-foreground">Surgery (if required):</p>
+                <p className="font-semibold text-foreground">$15,000 - $25,000</p>
+              </div>
+              <div>
+                <p className="text-muted-foreground">Hospital Stay (2-3 days):</p>
+                <p className="font-semibold text-foreground">$4,500 - $6,750</p>
               </div>
             </div>
+            <div className="mt-2 pt-2 border-t border-border flex justify-between items-center">
+              <p className="font-bold text-foreground">Total Estimated Cost:</p>
+              <p className="font-bold text-primary text-lg">$22,750 - $35,000</p>
+            </div>
           </div>
+          
+          <Button className="w-full bg-gradient-primary text-primary-foreground hover:opacity-90">
+            <Zap className="h-4 w-4 mr-2" />
+            Alert Payers & Personal AI Agent
+          </Button>
         </CardContent>
       </Card>
 

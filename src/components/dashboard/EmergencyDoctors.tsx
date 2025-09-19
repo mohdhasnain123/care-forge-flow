@@ -70,13 +70,13 @@ const EmergencyDoctors = ({ onBack }: EmergencyDoctorsProps) => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Available":
-        return "bg-success text-success-foreground";
+        return "bg-success text-success-foreground text-black";
       case "In Surgery":
-        return "bg-warning text-warning-foreground";
+        return "bg-warning text-warning-foreground text-black";
       case "On Call":
-        return "bg-info text-info-foreground";
+        return "bg-warning text-info-foreground text-black";
       default:
-        return "bg-muted text-muted-foreground";
+        return "bg-muted text-muted-foreground text-black";
     }
   };
 
