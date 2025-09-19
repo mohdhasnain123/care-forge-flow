@@ -125,7 +125,7 @@ const Index = () => {
       default:
         return (
           <>
-            <QuickStats />
+            
             <div className="space-y-8">
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-6">Doctor Availability Analytics</h2>
@@ -145,6 +145,7 @@ const Index = () => {
                 <PatientAnalytics />
               </div>
             </div>
+            <QuickStats />
             <PatientOverview />
           </>
         );

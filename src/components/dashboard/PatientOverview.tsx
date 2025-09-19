@@ -100,7 +100,7 @@ const PatientOverview = () => {
   return (
     <div className="space-y-6">
       {/* Utilization & Productivity Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="bg-gradient-card border-border shadow-md">
           <CardContent className="p-4 text-center">
             <TrendingUp className="h-6 w-6 text-primary mx-auto mb-2" />
