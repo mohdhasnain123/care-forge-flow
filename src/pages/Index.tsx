@@ -126,13 +126,13 @@ const Index = () => {
         return (
           <>
             <QuickStats />
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+            {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8"> */}
               <PatientOverview />
-              <div className="space-y-6">
+            {/* </div> */}
+             <div className="mt-8">
                 <DoctorAvailabilityAnalytics />
                 <SupportStaffAnalytics />
               </div>
-            </div>
             <div className="mt-8">
               <PatientAnalytics />
             </div>

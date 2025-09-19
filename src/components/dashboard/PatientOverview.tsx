@@ -138,9 +138,9 @@ const PatientOverview = () => {
         </Card> */}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6"> */}
         {/* Payer Mix Analytics */}
-        <Card className="bg-gradient-card border-border shadow-md">
+        {/* <Card className="bg-gradient-card border-border shadow-md">
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 text-foreground">
               <DollarSign className="h-5 w-5 text-primary" />
@@ -165,10 +165,10 @@ const PatientOverview = () => {
               </div>
             ))}
           </CardContent>
-        </Card>
+        </Card> */}
 
         {/* Recovery Rate by Specialty */}
-        <Card className="bg-gradient-card border-border shadow-md">
+        {/* <Card className="bg-gradient-card border-border shadow-md">
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 text-foreground">
               <Heart className="h-5 w-5 text-primary" />
@@ -194,12 +194,12 @@ const PatientOverview = () => {
               </div>
             ))}
           </CardContent>
-        </Card>
-      </div>
+        </Card> */}
+      {/* </div> */}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6"> */}
         {/* IoMT Connected Devices */}
-        <Card className="bg-gradient-card border-border shadow-md">
+        {/* <Card className="bg-gradient-card border-border shadow-md">
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 text-foreground">
               <Wifi className="h-5 w-5 text-primary" />
@@ -223,10 +223,10 @@ const PatientOverview = () => {
               </div>
             ))}
           </CardContent>
-        </Card>
+        </Card> */}
 
         {/* AI Agent Matrix */}
-        <Card className="bg-gradient-card border-border shadow-md">
+        {/* <Card className="bg-gradient-card border-border shadow-md">
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 text-foreground">
               <Brain className="h-5 w-5 text-primary" />
@@ -244,7 +244,7 @@ const PatientOverview = () => {
                   </div>
                 </div>
                 <div className="text-right">
-                  {/* <div className="font-semibold text-foreground">{agent.count}</div> */}
+                  <div className="font-semibold text-foreground">{agent.count}</div>
                   <Badge className={`${agent.status === 'active' ? 'bg-success' : 'bg-warning'} text-black text-xs`}>
                     {agent.count}
                   </Badge>
@@ -252,8 +252,8 @@ const PatientOverview = () => {
               </div>
             ))}
           </CardContent>
-        </Card>
-      </div>
+        </Card> */}
+      {/* </div> */}
     </div>
   );
 };
