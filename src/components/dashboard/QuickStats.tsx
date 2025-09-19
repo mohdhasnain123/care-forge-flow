@@ -23,13 +23,13 @@ const QuickStats = () => {
       action: "treatments"
     },
     {
-      title: "Critical Alerts",
-      value: "1",
-      change: "AI-detected emergencies",
-      icon: AlertTriangle,
+      title: "Emergency Doctors",
+      value: "8",
+      change: "Available for emergency cases",
+      icon: Users,
       color: "bg-destructive",
       isClickable: true,
-      action: "critical"
+      action: "emergencyDoctors"
     },
     {
       title: "Bed Utilization",
@@ -66,7 +66,7 @@ const QuickStats = () => {
         const baseValues = {
           "Upcoming Appointments": { base: 47, range: 10 },
           "Active Treatments": { base: 156, range: 15 },
-          "Critical Alerts": { base: 1, range: 1 },
+          "Emergency Doctors": { base: 8, range: 4 },
           "Bed Utilization": { base: 87, range: 8 },
           "Staff Optimization": { base: 94, range: 6 }
         };
@@ -95,9 +95,9 @@ const QuickStats = () => {
   const handleCardClick = (stat: any) => {
     if (stat.isClickable) {
       switch (stat.action) {
-        case 'critical':
-          const event = new CustomEvent('showCriticalPatients');
-          window.dispatchEvent(event);
+        case 'emergencyDoctors':
+          const emergencyEvent = new CustomEvent('showEmergencyDoctors');
+          window.dispatchEvent(emergencyEvent);
           break;
         case 'appointments':
           const appointmentsEvent = new CustomEvent('showAppointments');
