@@ -187,10 +187,10 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-12">
               <div>
-                <h2 className="text-xl font-semibold text-foreground mb-2">{patientData.name}</h2>
-                <div className="space-y-2">
+                <h2 className="text-xl font-semibold text-foreground mb-12">{patientData.name}</h2>
+                <div className="space-y-4">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Age:</span>
                     <span className="font-medium text-foreground">{patientData.age} years</span>
