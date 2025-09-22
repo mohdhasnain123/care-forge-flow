@@ -11,8 +11,8 @@ interface CriticalPatientsListProps {
 const CriticalPatientsList = ({ onBack, onSelectPatient }: CriticalPatientsListProps) => {
   const criticalPatients = [
     {
-      id: "PA-2024-001",
-      name: "Bob Anderson",
+      id: "PA-2035-08471",
+      name: "Bob Smith",
       age: 58,
       condition: "Severe Knee Injury with Compartment Syndrome Risk",
       severity: "CRITICAL",

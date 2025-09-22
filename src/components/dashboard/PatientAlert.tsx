@@ -11,11 +11,11 @@ interface PatientAlertProps {
 }
 
 const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
-  // Enhanced patient data for Bob Anderson
+  // Enhanced patient data for Bob Smith
   const patientData = {
-    name: "Bob Anderson",
+    name: "Bob Smith",
     age: 58,
-    id: "PA-2024-001",
+    id: "PA-2035-08471",
     condition: "Severe Knee Injury with Compartment Syndrome Risk",
     riskScore: 89,
     timeDetected: "4 minutes ago",
@@ -169,9 +169,9 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
           <Badge className="bg-warning text-warning-foreground text-black">
             Risk: {patientData.riskScore}%
           </Badge>
-          <Badge className="bg-success text-black">
+          {/* <Badge className="bg-success text-black">
             Payer: Pre-Approved
-          </Badge>
+          </Badge> */}
         </div>
       </div>
 
