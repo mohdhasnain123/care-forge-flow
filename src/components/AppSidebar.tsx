@@ -46,7 +46,7 @@ export function AppSidebar() {
                         `flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors ${
                           isActive 
                             ? 'bg-white text-black' 
-                            : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                            : 'text-white hover:text-white hover:bg-gray-800'
                         }`
                       }
                     >

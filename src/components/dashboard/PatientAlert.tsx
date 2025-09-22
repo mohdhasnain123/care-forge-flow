@@ -1,9 +1,10 @@
-import { ArrowLeft, AlertTriangle, Phone, Users, Heart, Activity, Clock, MapPin, Thermometer, Droplets, Truck, Video, Mic, Shield, Zap, X } from "lucide-react";
+import { ArrowLeft, AlertTriangle, Phone, Users, Heart, Activity, Clock, MapPin, Thermometer, Droplets, Truck, Video, Mic, Shield, Zap, X, DollarSign, Brain } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 interface PatientAlertProps {
   onBack: () => void;
@@ -52,6 +53,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
 
   const [showVideoCall, setShowVideoCall] = useState(false);
   const [eta, setEta] = useState(ambulanceData.eta);
+  const [showBillingModal, setShowBillingModal] = useState(false);
 
   // Update ETA countdown every second
   useEffect(() => {
@@ -394,70 +396,167 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
         </CardContent>
       </Card>
 
-      {/* Selected Orthopedic Doctor */}
-      <Card className="bg-gradient-card border-border shadow-lg">
-        <CardHeader>
-          <CardTitle className="flex items-center space-x-2">
-            <Users className="h-5 w-5 text-primary" />
-            <span>Selected Orthopedic Specialist</span>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="flex items-start justify-between">
-            <div className="space-y-2">
-              <h3 className="text-lg font-semibold text-foreground">Dr. Sarah Chen</h3>
-              <p className="text-muted-foreground">Orthopedic Surgery - Trauma Specialist</p>
-              <p className="text-sm text-muted-foreground">15+ years experience • Available in OR 3</p>
+      {/* Selected Specialists */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Card className="bg-gradient-card border-border shadow-lg">
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <Users className="h-5 w-5 text-primary" />
+              <span>Selected Orthopedic Specialist</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start justify-between">
+              <div className="space-y-2">
+                <h3 className="text-lg font-semibold text-foreground">Dr. Sarah Chen</h3>
+                <p className="text-muted-foreground">Orthopedic Surgery - Trauma Specialist</p>
+                <p className="text-sm text-muted-foreground">15+ years experience • Available in OR 3</p>
+              </div>
+              <Badge className="bg-success text-success-foreground text-black">Available</Badge>
             </div>
-            <Badge className="bg-success text-success-foreground text-black">Available</Badge>
-          </div>
-          
-          <div className="space-y-3">
-            <h4 className="font-semibold text-foreground">Detailed Treatment Plan:</h4>
-            <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-              <li>• Immediate X-ray and MRI of right knee</li>
-              <li>• Pain management protocol initiation</li>
-              <li>• Surgical consultation for potential ORIF procedure</li>
-              <li>• Post-operative rehabilitation planning</li>
-              <li>• 24-hour monitoring in orthopedic unit</li>
-            </ul>
-          </div>
-          
-          <div className="bg-background p-4 rounded-lg border border-border">
-            <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
-              <Zap className="h-4 w-4" />
-              Cost Estimation:
-            </h4>
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div>
-                <p className="text-muted-foreground">Emergency Consultation:</p>
-                <p className="font-semibold text-foreground">$850</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Imaging (X-ray + MRI):</p>
-                <p className="font-semibold text-foreground">$2,400</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Surgery (if required):</p>
-                <p className="font-semibold text-foreground">$15,000 - $25,000</p>
-              </div>
-              <div>
-                <p className="text-muted-foreground">Hospital Stay (2-3 days):</p>
-                <p className="font-semibold text-foreground">$4,500 - $6,750</p>
-              </div>
+            
+            <div className="space-y-3">
+              <h4 className="font-semibold text-foreground">Detailed Treatment Plan:</h4>
+              <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                <li>• Immediate X-ray and MRI of right knee</li>
+                <li>• Pain management protocol initiation</li>
+                <li>• Surgical consultation for potential ORIF procedure</li>
+                <li>• Post-operative rehabilitation planning</li>
+                <li>• 24-hour monitoring in orthopedic unit</li>
+              </ul>
             </div>
-            <div className="mt-2 pt-2 border-t border-border flex justify-between items-center">
-              <p className="font-bold text-foreground">Total Estimated Cost:</p>
-              <p className="font-bold text-primary text-lg">$22,750 - $35,000</p>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-gradient-card border-border shadow-lg">
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <Brain className="h-5 w-5 text-secondary" />
+              <span>Selected Neurologist</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-start justify-between">
+              <div className="space-y-2">
+                <h3 className="text-lg font-semibold text-foreground">Dr. Michael Rodriguez</h3>
+                <p className="text-muted-foreground">Neurology - Trauma & Emergency Specialist</p>
+                <p className="text-sm text-muted-foreground">12+ years experience • Available for consultation</p>
+              </div>
+              <Badge className="bg-success text-success-foreground text-black">Available</Badge>
             </div>
-          </div>
-          
-          <Button className="w-full bg-gradient-primary text-primary-foreground hover:opacity-90">
-            <Zap className="h-4 w-4 mr-2" />
-            Alert Payers & Personal AI Agent
-          </Button>
-        </CardContent>
-      </Card>
+            
+            <div className="space-y-3">
+              <h4 className="font-semibold text-foreground">Neurological Assessment Plan:</h4>
+              <ul className="text-sm text-muted-foreground space-y-1 ml-4">
+                <li>• Immediate consciousness evaluation</li>
+                <li>• CT scan to rule out head injury</li>
+                <li>• Neurological function testing</li>
+                <li>• Monitoring for signs of brain injury</li>
+                <li>• Coordination with orthopedic team</li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="flex gap-4 justify-center">
+        <Dialog open={showBillingModal} onOpenChange={setShowBillingModal}>
+          <DialogTrigger asChild>
+            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
+              <DollarSign className="h-4 w-4 mr-2" />
+              Billing and Cost Estimation
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="flex items-center space-x-2">
+                <DollarSign className="h-5 w-5 text-primary" />
+                <span>Comprehensive Cost Estimation</span>
+              </DialogTitle>
+            </DialogHeader>
+            <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Card className="bg-gradient-card">
+                  <CardHeader>
+                    <CardTitle className="text-primary">Orthopedic Treatment Costs</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Emergency Consultation:</span>
+                        <span className="font-semibold">$850</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Imaging (X-ray + MRI):</span>
+                        <span className="font-semibold">$2,400</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Surgery (if required):</span>
+                        <span className="font-semibold">$15,000 - $25,000</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Hospital Stay (2-3 days):</span>
+                        <span className="font-semibold">$4,500 - $6,750</span>
+                      </div>
+                      <div className="flex justify-between border-t pt-2">
+                        <span className="font-bold">Orthopedic Total:</span>
+                        <span className="font-bold text-primary">$22,750 - $35,000</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-gradient-card">
+                  <CardHeader>
+                    <CardTitle className="text-secondary">Neurological Assessment Costs</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Neurological Consultation:</span>
+                        <span className="font-semibold">$650</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">CT Brain Scan:</span>
+                        <span className="font-semibold">$1,200</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">EEG (if required):</span>
+                        <span className="font-semibold">$800</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">Follow-up visits (2):</span>
+                        <span className="font-semibold">$400</span>
+                      </div>
+                      <div className="flex justify-between border-t pt-2">
+                        <span className="font-bold">Neurological Total:</span>
+                        <span className="font-bold text-secondary">$3,050</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              <Card className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20">
+                <CardContent className="pt-6">
+                  <div className="flex justify-between items-center text-lg">
+                    <span className="font-bold">Combined Treatment Total:</span>
+                    <span className="font-bold text-2xl text-primary">$25,800 - $38,050</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    *Insurance coverage: Medicare + Aetna Supplemental estimated to cover 85-90% of total costs
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        <Button className="bg-gradient-primary text-primary-foreground hover:opacity-90">
+          <Zap className="h-4 w-4 mr-2" />
+          Alert Payers & Personal AI Agent
+        </Button>
+      </div>
 
       {/* Diagnostic & Treatment Protocols */}
       {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
