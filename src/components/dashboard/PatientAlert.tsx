@@ -204,6 +204,8 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
   const [showVideoCall, setShowVideoCall] = useState(false);
   const [eta, setEta] = useState(ambulanceData.eta);
   const [showBillingModal, setShowBillingModal] = useState(false);
+  const [preAuthStatus, setPreAuthStatus] = useState("in progress");
+  const [showTreatmentPlan, setShowTreatmentPlan] = useState(false);
 
   // Update ETA countdown every second
   useEffect(() => {
@@ -219,6 +221,20 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
     const secs = seconds % 60;
     return `${mins}:${secs.toString().padStart(2, "0")}`;
   };
+
+  // Handle the 3-second sequence for PRE-AUTH approval and treatment plan
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPreAuthStatus("approved");
+      setShowTreatmentPlan(true);
+      
+      // Reset notification count back to 1
+      const resetEvent = new CustomEvent('resetNotificationCount');
+      window.dispatchEvent(resetEvent);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   // Live updating vitals every second
   useEffect(() => {
@@ -379,8 +395,8 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
           </div>
         </div>
         <div className="flex items-center space-x-2">
-          <Badge className="bg-warning text-warning-foreground">
-            PRE-AUTH approval in progress
+          <Badge className={preAuthStatus === "approved" ? "bg-success text-success-foreground" : "bg-warning text-warning-foreground"}>
+            PRE-AUTH {preAuthStatus === "approved" ? "approved" : "approval in progress"}
           </Badge>
           <Badge className="bg-destructive text-destructive-foreground animate-pulse">
             CRITICAL
@@ -659,7 +675,8 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
       </Card>
 
       {/* Actual Treatment Plan - NEW SECTION */}
-      <Card className="bg-gradient-card border-border shadow-lg">
+      {showTreatmentPlan && (
+        <Card className="bg-gradient-card border-border shadow-lg animate-fade-in">
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Stethoscope className="h-5 w-5 text-primary" />
@@ -750,6 +767,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
           </div>
         </CardContent>
       </Card>
+      )}
 
       {/* Selected Specialists */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
