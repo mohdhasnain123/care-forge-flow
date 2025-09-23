@@ -395,7 +395,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
           </div>
         </div>
         <div className="flex items-center space-x-2">
-          <Badge className={preAuthStatus === "approved" ? "bg-success text-success-foreground" : "bg-warning text-warning-foreground"}>
+          <Badge className={preAuthStatus === "approved" ? "bg-success text-success-foreground text-black" : "bg-warning text-warning-foreground"}>
             PRE-AUTH {preAuthStatus === "approved" ? "approved" : "approval in progress"}
           </Badge>
           <Badge className="bg-destructive text-destructive-foreground animate-pulse">
@@ -436,9 +436,15 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Payer & Plan:</span>
+                    <span className="text-muted-foreground">Payer</span>
                     <span className="font-medium text-foreground text-sm">
                       NextGen Health Payer
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Plan</span>
+                    <span className="font-medium text-foreground text-sm">
+                      Medicaid Plan
                     </span>
                   </div>
                   <div className="flex justify-between items-center">
@@ -791,7 +797,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
                   15+ years experience • Available in OR 3
                 </p>
               </div>
-              <Badge className="bg-success text-success-foreground">
+              <Badge className="bg-success text-success-foreground text-black">
                 Available
               </Badge>
             </div>
@@ -831,7 +837,7 @@ const PatientAlert = ({ onBack, onViewSpecialists }: PatientAlertProps) => {
                   12+ years experience • Available for consultation
                 </p>
               </div>
-              <Badge className="bg-success text-success-foreground">
+              <Badge className="bg-success text-success-foreground text-black">
                 Available
               </Badge>
             </div>
